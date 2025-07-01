@@ -22,72 +22,72 @@ services:
       - PORT=3000
       - NATS_SERVERS=nats://nats-server:4222
 
-  # Socapshub-DB
-  socapshub-db:
-    image: postgres:16.3
-    restart: always
-    volumes:
-      - ./supervision-ms/postgres:/var/lib/postgresql/data
-    ports:
-      - 5432:5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=123456
-      - POSTGRES_DB=sisconcredb
+  # # Socapshub-DB
+  # socapshub-db:
+  #   image: postgres:16.3
+  #   restart: always
+  #   volumes:
+  #     - ./supervision-ms/postgres:/var/lib/postgresql/data
+  #   ports:
+  #     - 5432:5432
+  #   environment:
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=123456
+  #     - POSTGRES_DB=sisconcredb
 
-  supervision-ms:
-    depends_on:
-      - socapshub-db
-    build: ./supervision-ms
-    develop:
-      watch:
-        - action: sync
-          path: ./supervision-ms/src
-          target: /usr/src/app/src
-          ignore:
-            - node_modules
-    command: npm run start:dev
-    environment:
-      - PORT=3001
-      - NATS_SERVERS=nats://nats-server:4222
-      - DATABASE_URL=postgresql://postgres:123456@socapshub-db:5432/sisconcredb?schema=public
-      - JWT_SECRET=9YbXWFm/L79pXTo9osldZPRDSn2LPZ4xYevlxHQZaSA=  
+  # supervision-ms:
+  #   depends_on:
+  #     - socapshub-db
+  #   build: ./supervision-ms
+  #   develop:
+  #     watch:
+  #       - action: sync
+  #         path: ./supervision-ms/src
+  #         target: /usr/src/app/src
+  #         ignore:
+  #           - node_modules
+  #   command: npm run start:dev
+  #   environment:
+  #     - PORT=3001
+  #     - NATS_SERVERS=nats://nats-server:4222
+  #     - DATABASE_URL=postgresql://postgres:123456@socapshub-db:5432/sisconcredb?schema=public
+  #     - JWT_SECRET=9YbXWFm/L79pXTo9osldZPRDSn2LPZ4xYevlxHQZaSA=  
 
-  # Auth-MS
-  auth-ms:
-    depends_on:
-      - socapshub-db
-    build: ./auth-ms
-    develop:
-      watch:
-        - action: sync
-          path: ./auth-ms/src
-          target: /usr/src/app/src
-          ignore:
-            - node_modules
-    command: npm run start:dev
-    environment:
-      - PORT=3002
-      - NATS_SERVERS=nats://nats-server:4222
-      - DATABASE_URL=postgresql://postgres:123456@socapshub-db:5432/sisconcredb?schema=public
-      - JWT_SECRET=9YbXWFm/L79pXTo9osldZPRDSn2LPZ4xYevlxHQZaSA=
+  # # Auth-MS
+  # auth-ms:
+  #   depends_on:
+  #     - socapshub-db
+  #   build: ./auth-ms
+  #   develop:
+  #     watch:
+  #       - action: sync
+  #         path: ./auth-ms/src
+  #         target: /usr/src/app/src
+  #         ignore:
+  #           - node_modules
+  #   command: npm run start:dev
+  #   environment:
+  #     - PORT=3002
+  #     - NATS_SERVERS=nats://nats-server:4222
+  #     - DATABASE_URL=postgresql://postgres:123456@socapshub-db:5432/sisconcredb?schema=public
+  #     - JWT_SECRET=9YbXWFm/L79pXTo9osldZPRDSn2LPZ4xYevlxHQZaSA=
 
 
-  # Config-MS
-  config-ms:
-    depends_on:
-      - socapshub-db
-    build: ./config-ms
-    develop:
-      watch:
-        - action: sync
-          path: ./config-ms/src
-          target: /usr/src/app/src
-          ignore:
-            - node_modules
-    command: npm run start:dev
-    environment:
-      - PORT=3003
-      - NATS_SERVERS=nats://nats-server:4222
-      - DATABASE_URL=postgresql://postgres:123456@socapshub-db:5432/sisconcredb?schema=public
-      - JWT_SECRET=9YbXWFm/L79pXTo9osldZPRDSn2LPZ4xYevlxHQZaSA=
+  # # Config-MS
+  # config-ms:
+  #   depends_on:
+  #     - socapshub-db
+  #   build: ./config-ms
+  #   develop:
+  #     watch:
+  #       - action: sync
+  #         path: ./config-ms/src
+  #         target: /usr/src/app/src
+  #         ignore:
+  #           - node_modules
+  #   command: npm run start:dev
+  #   environment:
+  #     - PORT=3003
+  #     - NATS_SERVERS=nats://nats-server:4222
+  #     - DATABASE_URL=postgresql://postgres:123456@socapshub-db:5432/sisconcredb?schema=public
+  #     - JWT_SECRET=9YbXWFm/L79pXTo9osldZPRDSn2LPZ4xYevlxHQZaSA=
