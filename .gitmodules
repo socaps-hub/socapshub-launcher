@@ -7,3 +7,6 @@
 [submodule "supervision-ms"]
 	path = supervision-ms
 	url = https://github.com/socaps-hub/supervision-ms.git
+[submodule "config-ms"]
+	path = config-ms
+	url = https://github.com/socaps-hub/config-ms.git
