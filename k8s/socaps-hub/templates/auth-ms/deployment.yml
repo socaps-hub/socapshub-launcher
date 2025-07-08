@@ -18,8 +18,9 @@ spec:
         app: auth-ms
     spec:
       containers:
-      - image: northamerica-south1-docker.pkg.dev/socaps-hub-dev/image-registry/auth-ms
+      - image: northamerica-south1-docker.pkg.dev/socaps-hub-dev/image-registry/auth-ms:latest
         name: auth-ms
+        imagePullPolicy: Always
         env:
         - name: PORT
           value: "3000"
