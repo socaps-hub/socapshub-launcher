@@ -18,7 +18,7 @@ spec:
         app: config-ms
     spec:
       containers:
-      - image: northamerica-south1-docker.pkg.dev/socaps-hub-dev/image-registry/config-ms:latest
+      - image: northamerica-south1-docker.pkg.dev/socaps-hub-dev/image-registry/config-ms
         name: config-ms
         imagePullPolicy: Always
         env:

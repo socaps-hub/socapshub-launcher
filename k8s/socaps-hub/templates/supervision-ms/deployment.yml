@@ -18,7 +18,7 @@ spec:
         app: supervision-ms
     spec:
       containers:
-      - image: northamerica-south1-docker.pkg.dev/socaps-hub-dev/image-registry/supervision-ms:latest
+      - image: northamerica-south1-docker.pkg.dev/socaps-hub-dev/image-registry/supervision-ms
         name: supervision-ms
         imagePullPolicy: Always
         env:
