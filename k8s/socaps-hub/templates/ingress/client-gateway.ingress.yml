@@ -28,7 +28,7 @@ spec:
   tls:
     - hosts:
         - api.socaps-hub.enfoquecooperativo.com
-      secretName: socapshub-tls2  # Nombre del Secret TLS creado con el .crt y .key
+      secretName: socapshub-tls  # Nombre del Secret TLS creado con el .crt y .key
   rules:
     - host: api.socaps-hub.enfoquecooperativo.com
       http:
@@ -41,3 +41,7 @@ spec:
                 port:
                   number: 3000             # Puerto expuesto por tu servicio
 
+
+
+# Nota: Asegúrate de que el Secret TLS
+# kubectl create secret tls socapshub-tls --cert="C:\Users\marco\dominio-enfoquecooperativo.com\api_socaps-hub.enfoquecooperativo.com\api_socaps-hub_enfoquecooperativo_com.crt" --key="C:\Users\marco\dominio-enfoquecooperativo.com\certs\private.key" --namespace=default

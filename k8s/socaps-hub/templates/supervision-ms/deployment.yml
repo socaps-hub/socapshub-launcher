@@ -18,7 +18,7 @@ spec:
         app: supervision-ms
     spec:
       containers:
-      - image: northamerica-south1-docker.pkg.dev/socaps-hub-dev/image-registry/supervision-ms
+      - image: northamerica-south1-docker.pkg.dev/socaps-hub-dev-466500/image-registry/supervision-ms
         name: supervision-ms
         imagePullPolicy: Always
         env:
@@ -36,5 +36,11 @@ spec:
             secretKeyRef:
               name: socaps-hub-secrets
               key: jwt_secret
-        resources: {}
+        resources:
+          requests:
+            cpu: "100m"         # 🔽 solicita poco CPU
+            memory: "512Mi"     # 🔽 solicita menos RAM
+          limits:
+            cpu: "250m"         # 🔼 hasta cuánto puede usar
+            memory: "1Gi"       # 🔼 límite de memoria
 status: {}

@@ -18,7 +18,7 @@ spec:
         app: client-gateway
     spec:
       containers:
-      - image: northamerica-south1-docker.pkg.dev/socaps-hub-dev/image-registry/client-gateway
+      - image: northamerica-south1-docker.pkg.dev/socaps-hub-dev-466500/image-registry/client-gateway
         name: client-gateway
         imagePullPolicy: Always
         env:
@@ -26,5 +26,11 @@ spec:
           value: "3000"
         - name: NATS_SERVERS
           value: "nats://nats"
-        resources: {}
+        resources:
+          requests:
+            cpu: "100m"         # 🔽 solicita poco CPU
+            memory: "512Mi"     # 🔽 solicita menos RAM
+          limits:
+            cpu: "250m"         # 🔼 hasta cuánto puede usar
+            memory: "1Gi"      # 🔼 límite de memoria
 status: {}
