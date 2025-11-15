@@ -9,18 +9,22 @@ services:
     build: 
       context: ./client-gateway
       dockerfile: dockerfile.prod
-    image: northamerica-south1-docker.pkg.dev/socaps-hub-dev-466500/image-registry/client-gateway
+    image: northamerica-south1-docker.pkg.dev/socaps-hub-dev-478204/image-registry/client-gateway
     ports:
       - ${CLIENT_GATEWAY_PORT}:${CLIENT_GATEWAY_PORT}
     environment:
       - PORT=${CLIENT_GATEWAY_PORT}
       - NATS_SERVERS=nats://nats-server:4222
+      - AWS_S3_BUCKET_NAME=${AWS_S3_BUCKET_NAME}
+      - AWS_S3_REGION=${AWS_S3_REGION}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
   supervision-ms:
     build: 
       context: ./supervision-ms
       dockerfile: dockerfile.prod
-    image: northamerica-south1-docker.pkg.dev/socaps-hub-dev-466500/image-registry/supervision-ms
+    image: northamerica-south1-docker.pkg.dev/socaps-hub-dev-478204/image-registry/supervision-ms
     environment:
       - PORT=3001
       - NATS_SERVERS=nats://nats-server:4222
@@ -32,7 +36,7 @@ services:
     build: 
       context: ./auth-ms
       dockerfile: dockerfile.prod
-    image: northamerica-south1-docker.pkg.dev/socaps-hub-dev-466500/image-registry/auth-ms
+    image: northamerica-south1-docker.pkg.dev/socaps-hub-dev-478204/image-registry/auth-ms
     environment:
       - PORT=3002
       - NATS_SERVERS=nats://nats-server:4222
@@ -45,9 +49,13 @@ services:
     build: 
       context: ./config-ms
       dockerfile: dockerfile.prod
-    image: northamerica-south1-docker.pkg.dev/socaps-hub-dev-466500/image-registry/config-ms
+    image: northamerica-south1-docker.pkg.dev/socaps-hub-dev-478204/image-registry/config-ms
     environment:
       - PORT=3003
       - NATS_SERVERS=nats://nats-server:4222
       - DATABASE_URL=${DATABASE_URL_PROD}
       - JWT_SECRET=${JWT_SECRET}
+      - AWS_S3_BUCKET_NAME=${AWS_S3_BUCKET_NAME}
+      - AWS_S3_REGION=${AWS_S3_REGION}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
