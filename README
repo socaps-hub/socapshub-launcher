@@ -50,8 +50,9 @@ docker compose -f compose.prod.yml build
 ### 1. PC:
 1. Subir cambios a repos.
 2. docker compose -f compose.prod.yml build
+3. docker compose -f compose.prod.yml push
 
-
+### 2. EC2:
 1. git pull origin main
 2. git submodule update --init --recursive
 3. docker compose -f compose.prod.yml pull
