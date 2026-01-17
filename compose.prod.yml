@@ -53,7 +53,7 @@ services:
     build: 
       context: ./config-ms
       dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/config-ms:prisma-fix
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/config-ms:fix-dockerfile-prod
     environment:
       - PORT=3003
       - NATS_SERVERS=nats://nats-server:4222
