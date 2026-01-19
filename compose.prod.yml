@@ -9,7 +9,7 @@ services:
     build: 
       context: ./client-gateway
       dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/client-gateway:listen-port-v1
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/client-gateway:authorization-feat
     ports:
       - ${CLIENT_GATEWAY_PORT}:${CLIENT_GATEWAY_PORT}
     environment:
