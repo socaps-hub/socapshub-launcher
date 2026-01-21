@@ -6,10 +6,10 @@ services:
     image: nats:latest
 
   client-gateway:
-    build: 
-      context: ./client-gateway
-      dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/client-gateway:change-compose
+    # build: 
+    #   context: ./client-gateway
+    #   dockerfile: dockerfile.prod
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/client-gateway:fix-image
     ports:
       - ${CLIENT_GATEWAY_PORT}:${CLIENT_GATEWAY_PORT}
     environment:
@@ -21,10 +21,10 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
   supervision-ms:
-    build: 
-      context: ./supervision-ms
-      dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/supervision-ms:fix-main
+    # build: 
+    #   context: ./supervision-ms
+    #   dockerfile: dockerfile.prod
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/supervision-ms:fix-image
     environment:
       - PORT=3001
       - NATS_SERVERS=nats://nats-server:4222
@@ -37,9 +37,9 @@ services:
 
   # Auth-MS
   auth-ms:
-    build: 
-      context: ./auth-ms
-      dockerfile: dockerfile.prod
+    # build: 
+    #   context: ./auth-ms
+    #   dockerfile: dockerfile.prod
     image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/auth-ms:prisma-fix
     environment:
       - PORT=3002
@@ -50,9 +50,9 @@ services:
 
   # Config-MS
   config-ms:
-    build: 
-      context: ./config-ms
-      dockerfile: dockerfile.prod
+    # build: 
+    #   context: ./config-ms
+    #   dockerfile: dockerfile.prod
     image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/config-ms:fix-dockerfile-prod
     environment:
       - PORT=3003
