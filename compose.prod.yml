@@ -6,6 +6,7 @@ services:
     image: nats:latest
 
   client-gateway:
+    restart: always
     build: 
       context: ./client-gateway
       dockerfile: dockerfile.prod
@@ -21,6 +22,7 @@ services:
       - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
 
   supervision-ms:
+    restart: always
     build: 
       context: ./supervision-ms
       dockerfile: dockerfile.prod
