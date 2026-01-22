@@ -10,3 +10,6 @@
 [submodule "config-ms"]
 	path = config-ms
 	url = https://github.com/socaps-hub/config-ms.git
+[submodule "activity-log-ms"]
+	path = activity-log-ms
+	url = https://github.com/socaps-hub/activity-log-ms.git
