@@ -24,7 +24,7 @@ services:
     # build: 
     #   context: ./supervision-ms
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/supervision-ms:fix-image
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/supervision-ms:modify-remove
     environment:
       - PORT=3001
       - NATS_SERVERS=nats://nats-server:4222
