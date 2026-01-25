@@ -9,7 +9,7 @@ services:
     # build: 
     #   context: ./client-gateway
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/client-gateway:fix-image
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/client-gateway:activity-log
     ports:
       - ${CLIENT_GATEWAY_PORT}:${CLIENT_GATEWAY_PORT}
     environment:
@@ -24,7 +24,7 @@ services:
     # build: 
     #   context: ./supervision-ms
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/supervision-ms:modify-remove
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/supervision-ms:activity-log
     environment:
       - PORT=3001
       - NATS_SERVERS=nats://nats-server:4222
@@ -40,7 +40,7 @@ services:
     # build: 
     #   context: ./auth-ms
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/auth-ms:prisma-fix
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/auth-ms:activity-log
     environment:
       - PORT=3002
       - NATS_SERVERS=nats://nats-server:4222
@@ -53,9 +53,24 @@ services:
     # build: 
     #   context: ./config-ms
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/config-ms:fix-dockerfile-prod
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/config-ms:activity-log
     environment:
       - PORT=3003
+      - NATS_SERVERS=nats://nats-server:4222
+      - DATABASE_URL=${DATABASE_URL_PROD}
+      - JWT_SECRET=${JWT_SECRET}
+      - AWS_S3_BUCKET_NAME=${AWS_S3_BUCKET_NAME}
+      - AWS_S3_REGION=${AWS_S3_REGION}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+
+  activity-log-ms:
+    # build: 
+    #   context: ./config-ms
+    #   dockerfile: dockerfile.prod
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/activity-log-ms:activity-log
+    environment:
+      - PORT=3004
       - NATS_SERVERS=nats://nats-server:4222
       - DATABASE_URL=${DATABASE_URL_PROD}
       - JWT_SECRET=${JWT_SECRET}
