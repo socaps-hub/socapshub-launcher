@@ -9,7 +9,7 @@ services:
     # build: 
     #   context: ./client-gateway
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/client-gateway:activity-log
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/client-gateway:fix-f4-modify
     ports:
       - ${CLIENT_GATEWAY_PORT}:${CLIENT_GATEWAY_PORT}
     environment:
@@ -24,7 +24,7 @@ services:
     # build: 
     #   context: ./supervision-ms
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/supervision-ms:activity-log
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/supervision-ms:fix-f4-modify
     environment:
       - PORT=3001
       - NATS_SERVERS=nats://nats-server:4222
