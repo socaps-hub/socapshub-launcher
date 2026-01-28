@@ -9,7 +9,7 @@ services:
     # build: 
     #   context: ./client-gateway
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/client-gateway:sisconcre-fases-optimized
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/client-gateway:sisconcre-fases-optimized-v2
     ports:
       - ${CLIENT_GATEWAY_PORT}:${CLIENT_GATEWAY_PORT}
     environment:
@@ -24,7 +24,7 @@ services:
     # build: 
     #   context: ./supervision-ms
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/supervision-ms:sisconcre-fases-optimized
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/supervision-ms:sisconcre-fases-optimized-v2
     environment:
       - PORT=3001
       - NATS_SERVERS=nats://nats-server:4222
@@ -40,7 +40,7 @@ services:
     # build: 
     #   context: ./auth-ms
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/auth-ms:sisconcre-fases-optimized
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/auth-ms:sisconcre-fases-optimized-v2
     environment:
       - PORT=3002
       - NATS_SERVERS=nats://nats-server:4222
@@ -53,7 +53,7 @@ services:
     # build: 
     #   context: ./config-ms
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/config-ms:sisconcre-fases-optimized
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/config-ms:sisconcre-fases-optimized-v2
     environment:
       - PORT=3003
       - NATS_SERVERS=nats://nats-server:4222
@@ -68,7 +68,7 @@ services:
     # build: 
     #   context: ./config-ms
     #   dockerfile: dockerfile.prod
-    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/activity-log-ms:sisconcre-fases-optimized
+    image: 416851286443.dkr.ecr.mx-central-1.amazonaws.com/socaps/activity-log-ms:sisconcre-fases-optimized-v2
     environment:
       - PORT=3004
       - NATS_SERVERS=nats://nats-server:4222
