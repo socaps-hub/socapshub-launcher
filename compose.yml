@@ -125,3 +125,22 @@ services:
         - AWS_S3_REGION=${AWS_S3_REGION}
         - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
         - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+
+  # Operaciones-MS
+  operaciones-ms:
+    depends_on:
+      - socapshub-db
+    build: ./operaciones-ms
+    develop:
+      watch:
+        - action: sync
+          path: ./operaciones-ms/src
+          target: /usr/src/app/src
+          ignore:
+            - node_modules
+    command: npm run start:dev
+    environment:
+      - PORT=3005
+      - NATS_SERVERS=nats://nats-server:4222
+      - DATABASE_URL=postgresql://postgres:123456@socapshub-db:5432/sisconcredb?schema=public
+      - JWT_SECRET=9YbXWFm/L79pXTo9osldZPRDSn2LPZ4xYevlxHQZaSA=
