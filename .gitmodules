@@ -13,3 +13,6 @@
 [submodule "activity-log-ms"]
 	path = activity-log-ms
 	url = https://github.com/socaps-hub/activity-log-ms.git
+[submodule "operaciones-ms"]
+	path = operaciones-ms
+	url = https://github.com/socaps-hub/operaciones-ms.git
