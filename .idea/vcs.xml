@@ -6,6 +6,7 @@
     <mapping directory="$PROJECT_DIR$/auth-ms" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/client-gateway" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/config-ms" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/operaciones-ms" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/supervision-ms" vcs="Git" />
   </component>
 </project>
